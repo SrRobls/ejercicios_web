@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .calculadora {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 220px;
+        }
+        #pantalla {
+            width: 100%;
+            font-size: 24px;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        button {
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+        button:active {
+            background-color: #bbb;
+        }
+        .igual {
+            background-color: #ff69b4;
+            color: white;
+        }
+        .limpiar {
+            background-color: #ff4444;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <!-- este es el titulo de la calculadora -->
+        <h2>Calculadora</h2>
+        <!-- esta es la pantalla donde se muestran los numeros y resultados -->
+        <input id="pantalla" type="text" disabled>
+        <!-- estos son los botones de la calculadora -->
+        <div class="botones">
+            <!-- cada boton llama a la funcion agregarAPantalla con el valor correspondiente -->
+            <button onclick="agregarAPantalla('1')">1</button>
+            <button onclick="agregarAPantalla('2')">2</button>
+            <button onclick="agregarAPantalla('3')">3</button>
+            <button onclick="agregarAPantalla('+')">+</button>
+            <button onclick="agregarAPantalla('4')">4</button>
+            <button onclick="agregarAPantalla('5')">5</button>
+            <button onclick="agregarAPantalla('6')">6</button>
+            <button onclick="agregarAPantalla('-')">-</button>
+            <button onclick="agregarAPantalla('7')">7</button>
+            <button onclick="agregarAPantalla('8')">8</button>
+            <button onclick="agregarAPantalla('9')">9</button>
+            <button onclick="agregarAPantalla('*')">*</button>
+            <!-- el boton de limpiar llama a la funcion limpiarPantalla -->
+            <button class="limpiar" onclick="limpiarPantalla()">C</button>
+            <button onclick="agregarAPantalla('0')">0</button>
+            <!-- el botn de igual llama a la funcion calcularResultado -->
+            <button class="igual" onclick="calcularResultado()">=</button>
+            <button onclick="agregarAPantalla('/')">/</button>
+        </div>
+    </div>
+    
+    <script>
+        // esta funcion agega el valor del boton a la pantalla
+        function agregarAPantalla(valor) {
+            document.getElementById("pantalla").value += valor;
+        }
+        // esta funcion evalua la expresion en la pantalla y muestra el resultado
+        function calcularResultado() {
+            let pantalla = document.getElementById("pantalla");
+            pantalla.value = eval(pantalla.value);
+        }
+        // esta funcion limpia la pantalla
+        function limpiarPantalla() {
+            document.getElementById("pantalla").value = "";
+        }
+    </script>
+</body>
+</html>

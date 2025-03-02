@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quieres ser mi novia?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #ffe0f0;
+        }
+        h1 {
+            color: #d63384;
+        }
+        .buttons {
+            position: relative;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        #no {
+            background-color: #ff4444;
+            color: white;
+            position: absolute;
+        }
+
+        #no {
+            background-color: #ff4444;
+            color: white;
+            position: absolute;
+            transition: left 0.3s, top 0.3s;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="zona">
+        <h1>¿quieres ser mi novia?</h1> <!-- titulo en minusculas -->
+        <div class="buttons">
+        <button id="yes" onclick="aceptar()">sí</button> <!-- boton en minusculas -->
+        <button id="no" onmouseover="moverBoton()">no</button> <!-- boton en minusculas -->
+        </div>
+        </div>
+
+        <script>
+        function aceptar() {
+            alert("muak!"); // mensaje en minusculas
+        }
+
+        // esta funcion mueve el boton "no" a una posicion aleatoria dentro de la zona
+        function moverBoton() {
+            let btnNo = document.getElementById("no"); // obtener el boton "no"
+            let zona = document.querySelector('.zona'); // obtener la zona donde se mueve el boton
+            let x = Math.random() * (zona.offsetWidth + 100 - btnNo.offsetWidth); // calcular una posicion x aleatoria
+            let y = Math.random() * (zona.offsetHeight + 100 - btnNo.offsetHeight); // calcular una posicion y aleatoria
+            btnNo.style.left = x*2 + "px"; // asignar la nueva posicion x al boton
+            btnNo.style.top = y*2 + "px"; // asignar la nueva posicion y al boton
+        }
+        </script>
+    </body>
+    </html>
